@@ -409,15 +409,14 @@
     </div>
 </footer>
 <div id="ra-bp">        <style>
-article {
-    height: 100%;
-    min-height: 300px;
-}
+article { }
 #video {
     position: relative;
     padding-bottom: 56.25%;
     padding-top: 0;
     height: 0;
+    margin: auto;
+    max-width: 1100px;
 }
 #video iframe {
     position: absolute;
@@ -429,6 +428,13 @@ article {
 .center {
     text-align: center;
     margin: auto
+}
+@media only screen and (min-width: 1100px) {
+    #video { padding-bottom: 595px; }
+    article {
+        width: 1100px;
+        margin: auto;
+    }
 }
   #ra-bp{display:none;}
 </style>      </div> <section id="rao">  <div id="rao-close"></div> <div id="rao-wrap"></div> </section> 
