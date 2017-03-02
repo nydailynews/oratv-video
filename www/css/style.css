@@ -1,0 +1,353 @@
+body{
+  font-family: "Open Sans"
+}
+
+@media screen and (min-width: 642px) {
+
+  #top_ad {
+    margin-bottom: 40px;
+    margin-top: 20px;
+  }
+
+  #bottom_ad {
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+
+}
+
+@media screen and (max-width: 642px) {
+
+  #top_ad {
+    margin-top: 20px;
+  }
+
+  #bottom_ad {
+    margin-bottom: 20px;
+  }
+
+}
+
+/* Fixes for social menu */
+body #rh-subnav-wrap {
+    padding: 10px 20px 0;
+}
+#rh-subnav ul {
+    width: 200px;
+}
+.center {
+    text-align: center;
+    margin: auto
+}
+article {
+    max-width: 1100px;
+    margin: auto;
+}
+
+@media only screen and (min-width: 800px) {
+    #rh-subscribe { top:-30px!important; }
+}
+
+#ra-main {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#ra-ss-teasers{
+  z-index: 50 !important;
+}
+
+.ra-byline span{
+  text-shadow: 0 0 #333;
+      font: bold 12px "Open Sans",sans-serif;
+    color: #333;
+    display: inline-block;
+    
+}    
+
+
+
+#rh-subnav ul{
+  top:10px;
+  }
+
+.subhed{
+  margin-bottom: 0 !important;
+}
+
+.small_cap {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+#ra-fb{
+  background-image: url('../img/facebook.gif');
+  background-repeat: no-repeat;
+  background-position: 1px 1px;
+  width: 30px;
+  height: 30px;
+  margin-right: 11px;
+  cursor: pointer;
+}
+
+
+
+.rc-image{
+
+}
+
+.rc-header{
+  font-family: 'Open Sans';
+  font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+
+    border-width: 4px 0px 0px 0px;
+    background: transparent;
+    border-style: solid solid solid solid;
+    border-color: #333333;
+    padding: 5px 0 6px 0;
+}
+
+
+
+.rc-text{
+  font-size: 18.0px;
+    line-height: 24.0px;
+    font-weight: bold;
+    max-height: 72.0px;
+    font-family: "Open Sans Condensed" ;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 18px;
+    color: #333333
+}
+
+
+.rc-text:hover{
+    color: #ec2127
+}
+
+
+
+
+blockquote{
+  z-index: 49 !important;
+  background-color: #fafafa;
+}
+
+
+.event{
+  
+  margin-bottom: 35px;
+  text-align: center;
+  cursor: pointer;
+  float: left;
+  margin-left: 11px;
+  
+}
+
+.event img{
+  width: 150px !important;
+  object-fit: cover;
+  height: 150px !important;
+  filter: brightness(60%);
+  -webkit-filter: brightness(60%);
+  -moz-filter: brightness(60%);
+  -o-filter: brightness(60%);
+  -ms-filter: brightness(60%);
+}
+
+
+.related-content img{
+  width: 150px !important;
+  object-fit: cover;
+  height: 150px !important;
+  filter: brightness(60%);
+  -webkit-filter: brightness(60%);
+  -moz-filter: brightness(60%);
+  -o-filter: brightness(60%);
+  -ms-filter: brightness(60%);
+}
+
+.event figcaption{
+  display: none;
+}
+
+.timeline-date{
+  text-align: left;
+  font-family: "Open Sans Condensed";
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.timeline-slug{
+  text-align: left ;
+  font-family: "Open Sans Condensed";
+  font-size: 16px;
+}
+
+
+
+#ra-headers{ margin-top:0 !important;
+  }
+
+ra-figure.top{
+  width: 100%;
+}
+
+hed{
+  font-family: "Open Sans Condensed";
+  font-size: 90px;
+  line-height: normal;
+  position: absolute;
+  top:100%;
+  text-align: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+  color:white;
+  font-weight: bold;
+  text-shadow:0 1px 1px rgba(0,0,0,.8);
+  z-index: 200;
+  text-transform: uppercase;
+}
+
+dek{
+  font-family: "Open Sans";
+  font-size: 20px;
+  line-height: 30px;
+  position: absolute;
+  top: 49%;
+  text-align: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+  color:white;
+  font-weight: bold;
+  text-shadow:0 1px 1px rgba(0,0,0,.8);
+  z-index: 200;
+}
+
+
+/* desktop */
+@media(min-width:990px){
+  
+  #timeline{
+    /* background-color: red; */
+  } 
+
+  
+  #ra-headers{
+      max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+
+#ra-body>* {
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+  
+}
+
+
+/* ipad */
+@media(max-width:1100px){
+  
+  hed{
+    font-size: 50px !important;
+    top:50%
+  }
+    
+    #ra-share-top {
+    padding: 0px;
+}
+
+ 
+
+  
+}
+
+/* iphone */
+@media(max-width:727px){
+    
+
+  hed{
+    font-size: 50px !important;
+    position: relative; 
+    width: 100%;
+    font: bold 28px/35px "Open Sans Condensed";
+    color: #333;
+    text-align: center;
+    margin-left: 18px;
+    margin-right: auto;
+    line-height: normal;
+    text-shadow:none;
+    
+  }
+  dek{
+    font-size: 20px !important;
+    position: relative; 
+    width: 100%;
+    font: bold 28px/35px "Open Sans Condensed";
+    color: #333;
+    text-align: left;
+    margin-left: 18px !important;
+    margin-right: auto;
+    line-height: normal;
+    text-shadow:none;
+    
+  }
+  
+
+
+}
+@media(max-width:540px){
+
+
+#fb-icon{
+  float: left;top: 18px;position: relative;
+}
+
+}
+
+.first:first-letter
+{
+float: left;font-size: 97px;line-height: 70px;color: #333;padding: 10px 10px 10px 10px; margin-left: -10px;}
+
+.first_a_w:first-letter
+{
+float: left;font-size: 97px;line-height: 70px;color: #333;padding: 10px 10px 10px 10px;}
+
+
+#nydn-credit{
+
+  font-size: 11px;
+  font-family: "Open Sans";
+  line-height: normal;
+}
+
+.hide { display:none; }
+
+
+.center {
+    text-align: center;
+    margin: auto
+}
+@media only screen and (min-width: 800px) {
+    #rh-subscribe { top:0px!important; }
+}
+.advertisement {
+    font-size:10px;
+    color:#999;
+    font-family:sans-serif;
+}
+#ra-main h1 {
+    font:  3em/2em "Open Sans Condensed";
+}
