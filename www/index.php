@@ -341,8 +341,12 @@
  </div> 
 
 
-<h1>sadfsdfsd</h1>
-  <article id="ra-body" itemprop="articleBody">
+	<main id="ra-main"> <div id="ra-body-wrap">   
+		<h1>New York Daily News video</h1>
+		<h2>NYDN video channels</h2>
+		<ul>
+			<li><a href="ora-channel-one/">Channel One</a></li>
+		</ul>
 
 
 <hr>
@@ -363,7 +367,6 @@
               </script>
     </div>
   </div>
-  </article>
  
   
 </div>
