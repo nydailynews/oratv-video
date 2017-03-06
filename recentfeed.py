@@ -89,8 +89,13 @@ def main(args):
                     'id': article['id'],
                     'description': article['description']})
             elif args.output == 'csv':
-                article['datetime'] = article['published_parsed']
-                print '%(id)s,%(datetime)s,"%(title)s","%(description)s"' % article
+                dt = datetime.fromtimestamp(mktime(article.published_parsed))
+                article['datetime'] = '%s%s%s' % (dt.year, dt.month, dt.day)
+                if dt.month < 10:
+                    article['datetime'] = '%d0%d%d' % (dt.year, dt.month, dt.day)
+                    if dt.day < 10:
+                        article['datetime'] = '%d0%d0%d' % (dt.year, dt.month, dt.day)
+                print '%(datetime)s,%(id)s,"%(title)s","%(description)s"' % article
 
 
 def build_parser():
