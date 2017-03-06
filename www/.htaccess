@@ -1,3 +1,5 @@
 RewriteEngine On
 RewriteRule ^ora-([_0-9a-zA-Z-]+)/([_0-9a-zA-Z-]+)/ index.php?vendor=ora&channel=$1&slug=$2 [L]
 RewriteRule ^ora-([_0-9a-zA-Z-]+)/ index.php?vendor=ora&channel=$1 [L]
+#rewrite ^/ora-([_0-9a-zA-Z-]+)/([_0-9a-zA-Z-]+)/ /index.php?vendor=ora&channel=$1&slug=$2 last;
+#rewrite ^/ora-([_0-9a-zA-Z-]+)/ /index.php?vendor=ora&channel=$1 last;
