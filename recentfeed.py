@@ -79,13 +79,18 @@ def main(args):
             articles.append(rf.recently())
 
 
-        for article in articles[0]:
+        for i, article in enumerate(articles[0]):
             if args.output == 'html':
                 if type(article['title']) is types.UnicodeType:
                     article['title'] = article['title'].encode('utf-8', 'replace')
                 print '<li><a href="{0}">{1}</a></li>'.format(article['id'], article['title'])
             elif args.output == 'json':
-                json.dumps({'title': article['title'], 'url': article['id']})
+                print json.dumps({'title': article['title'],
+                    'id': article['id'],
+                    'description': article['description']})
+            elif args.output == 'csv':
+                article['datetime'] = article['published_parsed']
+                print '%(id)s,%(datetime)s,"%(title)s","%(description)s"' % article
 
 
 def build_parser():
@@ -98,6 +103,7 @@ def build_parser():
                                      epilog='')
     parser.add_argument("-v", "--verbose", dest="verbose", default=False, action="store_true")
     parser.add_argument("-d", "--days", dest="days", default=0)
+    parser.add_argument("-l", "--limit", dest="limit", default=0)
     parser.add_argument("-o", "--output", dest="output", default="html", type=str)
     parser.add_argument("urls", action="append", nargs="*")
     return parser
