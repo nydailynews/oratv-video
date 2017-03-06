@@ -4,7 +4,7 @@
 import os
 import doctest
 import json
-import httplib2
+import urllib2
 import feedparser
 import argparse
 import types
@@ -21,9 +21,9 @@ class RecentFeed:
 
     def __init__(self, args={}):
         self.args = args
-        if 'days' not in self.args:
-            self.args['days'] = 0
-        self.days = self.args['days']
+        if not hasattr(self.args, 'days'):
+            self.args.days = 0
+        self.days = self.args.days
 
     def get(self, url):
         """ Wrapper for API requests. Take a URL, return a json array.
@@ -36,13 +36,12 @@ class RecentFeed:
             >>> rf.parse()
             #>>> articles = rf.recently()
             """
-        h = httplib2.Http('.tmp')
-        (response, xml) = h.request(url, "GET")
-        if int(response['status']) >= 400:
+        response = urllib2.urlopen(url)
+        if int(response.code) >= 400:
             if 'verbose' in self.args and self.args.verbose:
                 print "URL: %s" % url
             raise ValueError("URL %s response: %s" % (url, response['status']))
-        self.xml = xml
+        self.xml = response.read()
         return True
 
     def parse(self):
