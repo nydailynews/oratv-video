@@ -59,7 +59,7 @@ class RecentFeed:
             dt = datetime.fromtimestamp(mktime(item.published_parsed))
             delta = datetime.today() - dt
 
-            if delta.days < self.days:
+            if delta.days > int(self.days):
                 continue
             items.append(item)
             if 'verbose' in self.args and self.args.verbose:
