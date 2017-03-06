@@ -62,7 +62,7 @@ class RecentFeed:
             if delta.days > self.days:
                 continue
             items.append(item)
-            if 'verbose' in self.args and self.args['verbose']:
+            if 'verbose' in self.args and self.args.verbose:
                 print delta.days, dt
         self.items = items
         return items
@@ -97,7 +97,7 @@ def build_parser():
                                                   Returns the items published today unless otherwise specified.''',
                                      epilog='')
     parser.add_argument("-v", "--verbose", dest="verbose", default=False, action="store_true")
-    parser.add_argument("-d", "--days", dest="days", default=0, action="count")
+    parser.add_argument("-d", "--days", dest="days", default=0)
     parser.add_argument("-o", "--output", dest="output", default="html", type=str)
     parser.add_argument("urls", action="append", nargs="*")
     return parser
