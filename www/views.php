@@ -46,6 +46,7 @@ class Request {
 			'CANONICALURL' => '', 
 			'IMGNAME' => '',
 			'PATHING' => '', 
+			'SIDEBAR' => '', 
 		);
 		$this->markup = file_get_contents('blank.html');
 	}
