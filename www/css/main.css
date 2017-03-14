@@ -1,0 +1,252 @@
+body {
+    background-color: black !important;
+    font-family: Open Sans;
+}
+
+#intro_box {
+  margin-top: 20px;
+/*  padding: 0px !important;*/
+}
+
+.related1 a, .related2 a {
+  color: #bcbcbc;
+  font-weight: bold;
+}
+
+.related1 a:hover, .related2 a:hover {
+  color: white;
+}
+
+.headline {
+  font-size: 30px;
+  line-height: 35px;
+  color: white;
+  font-family: Open Sans Condensed;
+}
+
+.dek {
+  font-size: 18px;
+  line-height: 24px;
+  color: #bcbcbc;
+  margin-bottom: 20px;
+  font-family: PT Serif !important;
+}
+
+.credit
+{
+  text-align:right;
+  font-size:.7em;
+  color:#999;
+  margin-bottom:0
+}
+.caption
+{
+  font-size:.8em;
+  color:#666;
+  line-height:19px;
+  font-weight: 100;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 0%; /* 16:9 */
+  padding-top: 25px;
+/*  height: 0;*/
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.videoWrapper div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+/*  height: 100%;*/
+}
+
+
+
+
+#social{
+/*   width: 180px; */
+  padding-top: 10px;
+  padding-bottom: 20px;
+  float: right;
+  width: 10%;
+  background-color: black;
+  z-index: 5000;
+  opacity: .9;
+  width: 100%;
+}
+
+
+#facebook{
+  background-image: url('../img/Share-Sprite.png');
+  background-repeat: no-repeat;
+  background-position: 1px 4px;
+  width: 40px;
+  height: 40px;
+  margin-right: 11px;
+  cursor: pointer;
+  float: left;
+}
+
+#twitter{
+  background-image: url('../img/Share-Sprite.png');
+  background-repeat: no-repeat;
+  background-position: 0 -42px;
+  width: 40px;
+  height: 40px;
+      margin-right: 11px;
+  cursor: pointer;
+  float: left;
+}
+
+#email{
+  background-image: url('../img/Share-Sprite.png');
+  background-repeat: no-repeat;
+  background-position: 0 -88px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  float: left;
+}
+
+#rubric p:hover {
+  opacity: 0.6;
+}
+
+.smallCaps{
+  font-size: 12px;
+ 
+}
+
+.rel_content {
+  padding: 0px !important;
+}
+
+.rel_content img{
+  width: 140px;
+  padding-bottom: 18px;
+  object-fit: cover;
+  height: 100px;
+} 
+
+.rel_content p{
+  font-size: 14px;
+}
+
+.rel_content2 {
+  padding: 0px !important;
+  float: left !important;
+}
+
+.rel_content2 img{
+  width: 95%;
+  padding-bottom: 18px;
+  object-fit: cover;
+} 
+
+.rel_content2 p {
+  font-size: 16px;
+  line-height: 18px;
+  font-family: Open Sans Condensed;
+}
+
+.rel_content3 {
+  float: left !important;
+}
+
+.rel_content3 img{
+  width: 100%;
+  padding-bottom: 18px;
+  object-fit: cover;
+} 
+
+.rel_content3 p{
+  font-size: 16px;
+  line-height: 18px;
+  font-family: Open Sans Condensed;
+}
+
+
+
+#byline {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#byline:hover {
+  /*text-decoration: underline;*/
+  color: red !important;
+}
+
+#nydn_credit{padding-bottom:11px;font-size:11px;color:#999;font-family:Arial;font-weight:400}
+
+.credit{text-align:right;font-size:.7em;color:#999;margin-bottom:0}
+
+
+.more_link{
+  color: red;
+  font-family: Open Sans;
+}
+
+.blurb_more{
+  display: none;
+}
+
+.read_more{
+  cursor: pointer;
+  color: red;
+}
+
+.back {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.back a {
+  color: red;
+  font-weight: bold;
+}
+
+.back:hover, .more_link:hover {
+  text-decoration: underline !important;
+  color: red !important;
+}
+
+.back:focus, .more_link:focus {
+  color: red !important;
+}
+
+.related2 {
+  display: none;
+}
+
+@media (max-width: 1041px) {
+  .related1 {
+    display: none;
+  }
+
+  .related2 {
+    display: inline;
+  }
+
+.headline {
+  margin-top: 20px;
+}
+
+}
+
+@media (max-width: 641px) {
+  .video {
+    padding: 0px !important; 
+  }
+
+}
