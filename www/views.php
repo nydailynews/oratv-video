@@ -44,7 +44,8 @@ class Request {
 			'SHORTURL' => '',
 			'KEYWORDS' => '', 
 			'CANONICALURL' => '', 
-			'IMGNAME' => ''
+			'IMGNAME' => '',
+			'PATHING' => '', 
 		);
 		$this->markup = file_get_contents('blank.html');
 	}
@@ -65,9 +66,7 @@ class Request {
 	function return_channel($channel)
 	{
 		$local = array(
-			'TITLE' => '', 
-			'DESCRIPTION' => '', 
-			'CANONICALURL' => '', 
+			'PATHING' => '../', 
 			'CONTENT' => file_get_contents('content/channel.html'),
 		);
 		// This include will populate the $channel_local array.

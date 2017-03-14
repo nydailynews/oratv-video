@@ -12,5 +12,5 @@ $channel_local = array(
 	'SHORTURL' => '',
 	'KEYWORDS' => '', 
 	'CANONICALURL' => '', 
-	'IMGNAME' => ''
+	'IMGNAME' => '',
 );
