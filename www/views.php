@@ -57,8 +57,7 @@ class Request {
 			'CANONICALURL' => '', 
 			'CONTENT' => file_get_contents('content/index.html'),
 		);
-		$merged = array_merge($this->template_vars, $local);
-		$this->template_vars = $merged;
+		$this->template_vars = array_merge($this->template_vars, $local);
 		$this->markup = $this->build_response();
 		echo $this->markup;
 	}
@@ -71,8 +70,7 @@ class Request {
 			'CANONICALURL' => '', 
 			'CONTENT' => file_get_contents('content/404.html'),
 		);
-		$merged = array_merge($this->template_vars, $local);
-		$this->template_vars = $merged;
+		$this->template_vars = array_merge($this->template_vars, $local);
 		$this->markup = $this->build_response();
 		header('HTTP/1.0 404 Not Found');
 		echo $this->markup;
