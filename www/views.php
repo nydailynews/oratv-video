@@ -62,6 +62,29 @@ class Request {
 		echo $this->markup;
 	}
 
+	function return_channel($channel)
+	{
+		$local = array(
+			'TITLE' => '', 
+			'DESCRIPTION' => '', 
+			'CANONICALURL' => '', 
+			'CONTENT' => file_get_contents('content/channel.html'),
+		);
+		// This include will populate the $channel_local array.
+		include('channel/' . $channel . '.php');
+		$local['CONTENT'] = $this->build_channel($channel, $channel_local, $local['CONTENT']);
+
+		$this->template_vars = array_merge($this->template_vars, $local);
+		$this->markup = $this->build_response();
+		echo $this->markup;
+	}
+
+	function build_channel($channel, $local, $content)
+	{
+		// Replace the vars in the page content with actual content.
+		return str_replace(array_keys($this->template_vars), array_values($this->template_vars), $content);
+	}
+
 	function return_404()
 	{
 		$local = array(
