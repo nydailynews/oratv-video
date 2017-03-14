@@ -17,8 +17,17 @@ $approved_channels = ['mike-rogers-world-war-e'];
 
 $request = new Request();
 
-if ( !in_array($vendor, $approved_vendors) ) $request->return_404();
-if ( !in_array($channel, $approved_channels) ) $request->return_404();
+if ( $slug !== '' ):
+	if ( !in_array($vendor, $approved_vendors) ) $request->return_404();
+	if ( !in_array($channel, $approved_channels) ) $request->return_404();
+	$request->return_detail($channel, $slug);
+elseif ( $channel !== '' ):
+	if ( !in_array($vendor, $approved_vendors) ) $request->return_404();
+	if ( !in_array($channel, $approved_channels) ) $request->return_404();
+	$request->return_channel($channel);
+else:
+	$request->return_index();
+endif;
 
 class Request {
 
@@ -35,20 +44,34 @@ class Request {
 			'SHORTURL' => '',
 			'KEYWORDS' => '', 
 			'CANONICALURL' => '', 
-			'IMGNAME' => '');
+			'IMGNAME' => ''
+		);
 		$this->markup = file_get_contents('blank.html');
+	}
+
+	function return_index()
+	{
+		$local = array(
+			'TITLE' => 'New York Daily News video', 
+			'DESCRIPTION' => '', 
+			'CANONICALURL' => '', 
+			'CONTENT' => file_get_contents('content/index.html'),
+		);
+		$merged = array_merge($this->template_vars, $local);
+		$this->template_vars = $merged;
+		$this->markup = $this->build_response();
+		echo $this->markup;
 	}
 
 	function return_404()
 	{
-		$local_template_vars = array(
+		$local = array(
 			'TITLE' => 'Page not found', 
 			'DESCRIPTION' => 'This is your 404 page.', 
-			'SHORTURL' => '',
-			'KEYWORDS' => '', 
 			'CANONICALURL' => '', 
-			'IMGNAME' => '');
-		$merged = array_merge($this->template_vars, $local_template_vars);
+			'CONTENT' => file_get_contents('content/404.html'),
+		);
+		$merged = array_merge($this->template_vars, $local);
 		$this->template_vars = $merged;
 		$this->markup = $this->build_response();
 		header('HTTP/1.0 404 Not Found');
