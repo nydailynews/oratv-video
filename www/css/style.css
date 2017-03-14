@@ -393,7 +393,7 @@ float: left;font-size: 97px;line-height: 70px;color: #333;padding: 10px 10px 10p
 @media only screen and (min-width: 1100px) {
     #video { padding-bottom: 595px; }
 }
-p { font: 17px/30px "PT Serif",serif; }
+p, li { font: 17px/30px "PT Serif",serif; }
 
 /* Fixes for social menu */
 body #rh-subnav-wrap {

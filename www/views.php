@@ -18,6 +18,7 @@ class Request {
 			'IMGNAME' => '',
 			'PATHING' => '', 
 			'SIDEBAR' => '', 
+			'PLAYERURL' => '', 
 		);
 		$this->markup = file_get_contents('blank.html');
 	}
