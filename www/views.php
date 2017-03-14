@@ -7,6 +7,33 @@
 #RewriteRule ^ora-([_0-9a-zA-Z-]+)/([_0-9a-zA-Z-]+)/ index.php?vendor=ora&channel=$1&slug=$2 [L]
 #RewriteRule ^ora-([_0-9a-zA-Z-]+)/ index.php?vendor=ora&channel=$1 [L]
 
+// Sanitize and check input
 $vendor = htmlspecialchars($_GET['vendor']);
-$channel = htmlspecialchars($_GET['channel']);
+$channel = htmlspecialchars($_GET['channel']
 $slug = htmlspecialchars($_GET['slug']);
+
+$approved_vendors = ['ora'];
+$approved_channels = ['mike-rogers-world-war-e'];
+
+$request = new Request();
+
+if ( !in_array($vendor, $approved_vendors) ) $request->return_404();
+if ( !in_array($channel, $approved_channels) ) $request->return_404();
+
+class Request {
+
+	// A Request object takes all the information needed to put together a response
+	// and returns the response.
+
+	function __construct()
+	{
+	}
+
+	function return_404()
+	{
+	}
+
+	function build_response()
+	{
+	}
+}
