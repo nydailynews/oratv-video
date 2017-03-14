@@ -378,5 +378,20 @@ float: left;font-size: 97px;line-height: 70px;color: #333;padding: 10px 10px 10p
         margin: auto;
     }
 }
-p, label, dd { font: 17px/30px "PT Serif",serif; }
+p { font: 17px/30px "PT Serif",serif; }
 
+/* Fixes for social menu */
+body #rh-subnav-wrap {
+    padding: 0 20px 10px;
+}
+#rh-subnav ul {
+    width: 200px;
+}
+.center {
+    text-align: center;
+    margin: auto
+}
+article {
+    max-width: 1100px;
+    margin: auto;
+}
