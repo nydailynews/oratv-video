@@ -86,7 +86,7 @@ article p, .dek {
 
 
 #facebook{
-  background-image: url('../img/Share-Sprite.png');
+  background-image: url('../img/share-sprite.png');
   background-repeat: no-repeat;
   background-position: 1px 4px;
   width: 40px;
@@ -97,7 +97,7 @@ article p, .dek {
 }
 
 #twitter{
-  background-image: url('../img/Share-Sprite.png');
+  background-image: url('../img/share-sprite.png');
   background-repeat: no-repeat;
   background-position: 0 -42px;
   width: 40px;
@@ -108,7 +108,7 @@ article p, .dek {
 }
 
 #email{
-  background-image: url('../img/Share-Sprite.png');
+  background-image: url('../img/share-sprite.png');
   background-repeat: no-repeat;
   background-position: 0 -88px;
   width: 40px;

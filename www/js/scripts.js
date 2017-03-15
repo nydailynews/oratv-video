@@ -67,7 +67,7 @@ function formatWords(sentence, show) {
 
 }
 
-readMore();
+//readMore();
 
 $(document).ready(function(){
 
