@@ -7,8 +7,10 @@ class Request {
 	var $template_vars;
 	var $markup;
 
-	function __construct()
+	function __construct($domain, $url_base)
 	{
+		$this->domain = $domain;
+		$this->url_base = $url_base;
 		$this->template_vars = array(
 			'TITLE' => '', 
 			'DESCRIPTION' => '', 
@@ -32,7 +34,7 @@ class Request {
 		$local = array(
 			'TITLE' => 'New York Daily News video', 
 			'DESCRIPTION' => '', 
-			'CANONICALURL' => 'http://interactive.nydailynews.com/video/', 
+			'CANONICALURL' => $this->domain . $this->url_base, 
 			'PLAYERURL' => '', 
 			'CONTENT' => file_get_contents('content/index.html'),
 		);
@@ -48,6 +50,7 @@ class Request {
 		// Return markup of an entire html page.
 		$local = array(
 			'PATHING' => '../', 
+			'CANONICALURL' => $this->domain . $this->url_base . $channel . '/',
 			'CONTENT' => file_get_contents('content/channel.html'),
 		);
 		// This include will populate the $channel_local array.
@@ -58,7 +61,7 @@ class Request {
 		$this->template_vars = array_merge($this->template_vars, $local, $channel_local);
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
-		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, 5);
+		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 5);
 		$this->markup = $this->populate_markup();
 		return $this->markup;
 	}
@@ -69,7 +72,7 @@ class Request {
 		$local = array(
 			'TITLE' => $details['title'], 
 			'DESCRIPTION' => $details['description'], 
-			'CANONICALURL' => 'http://interactive.nydailynews.com/video/' . $channel . '/' . $details['slug'] . '/', 
+			'CANONICALURL' => $this->domain . $this->url_base . $channel . '/' . $details['slug'] . '/', 
 			'PATHING' => '../../', 
 			'CONTENT' => file_get_contents('content/detail.html'),
 		);
@@ -81,18 +84,18 @@ class Request {
 		$this->template_vars = array_merge($this->template_vars, $channel_local, $local);
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
-		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, 5);
+		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 5);
 		$this->markup = $this->populate_markup();
 		return $this->markup;
 	}
 	
-	function format_recent_videos($items, $limit)
+	function format_recent_videos($items, $channel, $limit)
 	{
 		// Return an array of recent video objects for formatting.
 		$i = 0;
 		$return = '';
 		foreach ( $items as $key => $value ):
-			$return .= '	<li><a href="' . $value['slug'] . '/">' . $value['title'] . '</a></li>' . "\n";
+			$return .= '	<li><a href="' . $this->url_base . $channel . '/' . $value['slug'] . '/">' . $value['title'] . '</a></li>' . "\n";
 		endforeach;
 		return '<ul>' . $return . '</ul>';
 	}

@@ -20,7 +20,9 @@ $slug = htmlspecialchars($_GET['slug']);
 $approved_vendors = ['ora'];
 $approved_channels = ['mike-rogers-world-war-e'];
 
-$request = new Request();
+$domain = 'http://interactive.nydailynews.com';
+$url_base = '/video/';
+$request = new Request($domain, $url_base);
 
 if ( $slug !== '' ):
 	if ( !in_array($vendor, $approved_vendors) ) $request->return_404();
