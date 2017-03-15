@@ -20,7 +20,7 @@ class Request {
 			'CANONICALURL' => '', 
 			'IMGNAME' => '',
 			'PATHING' => '', 
-			'SIDEBAR' => '', 
+			'ASIDE_H2' => '', 
 			'PLAYERURL' => '', 
 			'UPLOAD_DATE' => '', 
 			'MORE' => '', 
@@ -59,6 +59,7 @@ class Request {
 		include('channel/' . $channel . '.php');
 
 		$this->template_vars = array_merge($this->template_vars, $local, $channel_local);
+		$this->template_vars['ASIDE_H2'] = 'More about ' . $channel_local['TITLE'];
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
 		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 5);
@@ -82,6 +83,7 @@ class Request {
 		include('channel/' . $channel . '.php');
 
 		$this->template_vars = array_merge($this->template_vars, $channel_local, $local);
+		$this->template_vars['ASIDE_H2'] = 'More about ' . $channel_local['TITLE'];
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
 		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 5);
