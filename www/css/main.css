@@ -24,7 +24,7 @@ body {
   font-family: Open Sans Condensed;
 }
 
-.dek {
+article p, .dek {
   font-size: 18px;
   line-height: 24px;
   color: #bcbcbc;
@@ -249,4 +249,28 @@ body {
     padding: 0px !important; 
   }
 
+}
+
+/* JOE'S NEW VIDEO PLAYER STYLES */
+#video {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 0;
+    height: 0;
+    margin: auto;
+    max-width: 1100px;
+}
+#video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+@media only screen and (min-width: 1100px) {
+    #video { padding-bottom: 595px; }
+}
+.center {
+    text-align: center;
+    margin: auto
 }
