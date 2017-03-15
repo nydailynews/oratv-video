@@ -10,8 +10,7 @@ $channel_local = array(
 <p>The electronic world has a profound effect on your personal security and privacy...but you have to know how it works to protect yourself.</p>
 <p>Mike Rogers analyzes the threats and gives the best case, worst case, and most likely scenarios in “World War E.”</p>', 
 	'SHORTURL' => 'http://nydn.us/WorldWarE',
-	'PLAYERURL' => '//www.ora.tv/embed/partner/thedailynewsflash/playlist/256/v/1',
+	'PLAYER_URL' => '//www.ora.tv/embed/partner/thedailynewsflash/playlist/256/v/1',
 	'KEYWORDS' => '', 
-	'CANONICALURL' => '', 
 	'IMGNAME' => '',
 );

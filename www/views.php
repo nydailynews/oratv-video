@@ -17,11 +17,11 @@ class Request {
 			'LONG_DESC' => '', 
 			'SHORTURL' => 'http://nydn.us/WorldWarE',
 			'KEYWORDS' => 'news,video,\'news video\'', 
-			'CANONICALURL' => '', 
+			'CANONICAL_URL' => '', 
 			'IMGNAME' => '',
 			'PATHING' => '', 
 			'ASIDE_H2' => '', 
-			'PLAYERURL' => '', 
+			'PLAYER_URL' => '', 
 			'UPLOAD_DATE' => '', 
 			'MORE' => '', 
 			'PLAYER' => file_get_contents('player.html'),
@@ -34,8 +34,8 @@ class Request {
 		$local = array(
 			'TITLE' => 'New York Daily News video', 
 			'DESCRIPTION' => '', 
-			'CANONICALURL' => $this->domain . $this->url_base, 
-			'PLAYERURL' => '', 
+			'CANONICAL_URL' => $this->domain . $this->url_base, 
+			'PLAYER_URL' => '', 
 			'CONTENT' => file_get_contents('content/index.html'),
 		);
 		$this->template_vars = array_merge($this->template_vars, $local);
@@ -50,7 +50,7 @@ class Request {
 		// Return markup of an entire html page.
 		$local = array(
 			'PATHING' => '../', 
-			'CANONICALURL' => $this->domain . $this->url_base . $channel . '/',
+			'CANONICAL_URL' => $this->domain . $this->url_base . $channel . '/',
 			'CONTENT' => file_get_contents('content/channel.html'),
 		);
 		// This include will populate the $channel_local array.
@@ -73,7 +73,7 @@ class Request {
 		$local = array(
 			'TITLE' => $details['title'], 
 			'DESCRIPTION' => $details['description'], 
-			'CANONICALURL' => $this->domain . $this->url_base . $channel . '/' . $details['slug'] . '/', 
+			'CANONICAL_URL' => $this->domain . $this->url_base . $channel . '/' . $details['slug'] . '/', 
 			'PATHING' => '../../', 
 			'CONTENT' => file_get_contents('content/detail.html'),
 		);
@@ -116,7 +116,7 @@ class Request {
 		$local = array(
 			'TITLE' => 'Page not found', 
 			'DESCRIPTION' => 'This is your 404 page.', 
-			'CANONICALURL' => '', 
+			'CANONICAL_URL' => $this->domain . $this->url_base, 
 			'CONTENT' => file_get_contents('content/404.html'),
 		);
 		$this->template_vars = array_merge($this->template_vars, $local);
