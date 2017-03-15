@@ -12,6 +12,7 @@ class Request {
 		$this->template_vars = array(
 			'TITLE' => '', 
 			'DESCRIPTION' => '', 
+			'LONG_DESC' => '', 
 			'SHORTURL' => '',
 			'KEYWORDS' => '', 
 			'CANONICALURL' => '', 
@@ -19,6 +20,8 @@ class Request {
 			'PATHING' => '', 
 			'SIDEBAR' => '', 
 			'PLAYERURL' => '', 
+			'UPLOAD_DATE' => '', 
+			'PLAYER' => file_get_contents('player.html'),
 		);
 		$this->markup = file_get_contents('blank.html');
 	}
@@ -28,10 +31,13 @@ class Request {
 		$local = array(
 			'TITLE' => 'New York Daily News video', 
 			'DESCRIPTION' => '', 
-			'CANONICALURL' => '', 
+			'CANONICALURL' => 'http://interactive.nydailynews.com/video/', 
+			'PLAYERURL' => '', 
 			'CONTENT' => file_get_contents('content/index.html'),
 		);
 		$this->template_vars = array_merge($this->template_vars, $local);
+		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
+		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
 		$this->markup = $this->populate_markup();
 		echo $this->markup;
 	}
@@ -49,6 +55,7 @@ class Request {
 
 		$this->template_vars = array_merge($this->template_vars, $local, $channel_local);
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
+		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
 		$this->markup = $this->populate_markup();
 		echo $this->markup;
 	}

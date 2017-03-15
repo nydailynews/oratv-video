@@ -1,8 +1,7 @@
 <?php
-//include('env.php');
-//include(CLASS_PATH . 'class.csv.php');
+require('env.php');
+require(CLASS_PATH . 'class.csv.php');
 //include('../class.csv.php');
-//$csv = new parseCSV('data.csv');
 include('views.php');
 
 // Take any GET parameters and turn that into content we can relay back to the template.
@@ -30,6 +29,7 @@ if ( $slug !== '' ):
 elseif ( $channel !== '' ):
 	if ( !in_array($vendor, $approved_vendors) ) $request->return_404();
 	if ( !in_array($channel, $approved_channels) ) $request->return_404();
+	$data = new parseCSV($vendor . '-' . $channel . '.csv');
 	$request->return_channel($channel);
 else:
 	$request->return_index();
