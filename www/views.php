@@ -21,6 +21,7 @@ class Request {
 			'SIDEBAR' => '', 
 			'PLAYERURL' => '', 
 			'UPLOAD_DATE' => '', 
+			'MORE' => '', 
 			'PLAYER' => file_get_contents('player.html'),
 		);
 		$this->markup = file_get_contents('blank.html');
@@ -39,11 +40,12 @@ class Request {
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
 		$this->markup = $this->populate_markup();
-		echo $this->markup;
+		return $this->markup;
 	}
 
 	function return_channel($channel)
 	{
+		// Return markup of an entire html page.
 		$local = array(
 			'PATHING' => '../', 
 			'CONTENT' => file_get_contents('content/channel.html'),
@@ -57,7 +59,17 @@ class Request {
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
 		$this->markup = $this->populate_markup();
-		echo $this->markup;
+		return $this->markup;
+	}
+	
+	function get_recent_videos()
+	{
+		// Return an array of recent video objects for formatting.
+	}
+
+	function get_video()
+	{
+		// Return the details of a video object
 	}
 
 	function return_404()
@@ -73,7 +85,7 @@ class Request {
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
 		$this->markup = $this->populate_markup();
 		header('HTTP/1.0 404 Not Found');
-		echo $this->markup;
+		return $this->markup;
 	}
 
 	function populate_markup($markup='')

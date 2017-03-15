@@ -25,13 +25,13 @@ $request = new Request();
 if ( $slug !== '' ):
 	if ( !in_array($vendor, $approved_vendors) ) $request->return_404();
 	if ( !in_array($channel, $approved_channels) ) $request->return_404();
-	$request->return_detail($channel, $slug);
+	echo $request->return_detail($channel, $slug);
 elseif ( $channel !== '' ):
 	if ( !in_array($vendor, $approved_vendors) ) $request->return_404();
 	if ( !in_array($channel, $approved_channels) ) $request->return_404();
 	$data = new parseCSV('channel-' . $vendor . '-' . $channel . '.csv');
-	$request->return_channel($channel);
+	echo $request->return_channel($channel);
 else:
-	$request->return_index();
+	echo $request->return_index();
 endif;
 ?>
