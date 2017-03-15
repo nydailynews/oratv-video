@@ -61,6 +61,7 @@ class Request {
 
 		$this->template_vars = array_merge($this->template_vars, $local, $channel_local);
 		$this->template_vars['ASIDE_H2'] = 'More about ' . $channel_local['TITLE'];
+		$this->template_vars['ASIDE_H2'] = 'More about “World War E” with Mike Rogers';
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
 		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 5);

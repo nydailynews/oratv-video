@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5, .headline {
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
-article p, .dek {
+article p, #intro_box p, .dek {
   font-size: 18px;
   line-height: 24px;
   color: #bcbcbc;
@@ -272,4 +272,14 @@ article p, .dek {
 .center {
     text-align: center;
     margin: auto
+}
+
+/* Hackery to adjust the display of the long description on different devices */
+@media only screen and (min-width: 1025px) {
+ article aside aside { display: none; }
+ .video aside { display: block; }
+}
+@media only screen and (max-width: 1025px) {
+ article aside aside { display: block; }
+ .video aside { display: none; }
 }
