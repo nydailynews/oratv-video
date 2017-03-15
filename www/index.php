@@ -29,7 +29,7 @@ if ( $slug !== '' ):
 elseif ( $channel !== '' ):
 	if ( !in_array($vendor, $approved_vendors) ) $request->return_404();
 	if ( !in_array($channel, $approved_channels) ) $request->return_404();
-	$data = new parseCSV($vendor . '-' . $channel . '.csv');
+	$data = new parseCSV('channel-' . $vendor . '-' . $channel . '.csv');
 	$request->return_channel($channel);
 else:
 	$request->return_index();

@@ -13,8 +13,8 @@ class Request {
 			'TITLE' => '', 
 			'DESCRIPTION' => '', 
 			'LONG_DESC' => '', 
-			'SHORTURL' => '',
-			'KEYWORDS' => '', 
+			'SHORTURL' => 'http://nydn.us/WorldWarE',
+			'KEYWORDS' => 'news,video,\'news video\'', 
 			'CANONICALURL' => '', 
 			'IMGNAME' => '',
 			'PATHING' => '', 
@@ -69,6 +69,8 @@ class Request {
 			'CONTENT' => file_get_contents('content/404.html'),
 		);
 		$this->template_vars = array_merge($this->template_vars, $local);
+		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
+		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
 		$this->markup = $this->populate_markup();
 		header('HTTP/1.0 404 Not Found');
 		echo $this->markup;
