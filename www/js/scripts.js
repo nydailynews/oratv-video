@@ -90,9 +90,7 @@ $(window).resize(function(){
     $(".videoWrapper").css("height",video_height);
 })
 
-$(document).ready(function(){
-
-}),
+$(document).ready(function(){}),
        
     function() {
         var e, t;
@@ -157,9 +155,7 @@ $(document).ready(function(){
         offset_top: 0
     });
     
-    $(document).ready(function() {
-       
-    }), 
+    $(document).ready(function() { }), 
     function() {
         var e, t;
         e = this.jQuery || window.jQuery, t = e(window), e.fn.stick_in_parent = function(o) {
