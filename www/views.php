@@ -43,7 +43,7 @@ class Request {
 		return $this->markup;
 	}
 
-	function return_channel($channel)
+	function return_channel($channel, $items)
 	{
 		// Return markup of an entire html page.
 		$local = array(
@@ -58,18 +58,49 @@ class Request {
 		$this->template_vars = array_merge($this->template_vars, $local, $channel_local);
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
+		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, 5);
+		$this->markup = $this->populate_markup();
+		return $this->markup;
+	}
+
+	function return_detail($channel, $items, $details)
+	{
+		// Return markup of an entire html page.
+		$local = array(
+			'PATHING' => '../../', 
+			'CONTENT' => file_get_contents('content/detail.html'),
+		);
+		// This include will populate the $channel_local array.
+		// We also need some of the $channel_local vars in the parent-template array,
+		// so we merge that later on too.
+		include('channel/' . $channel . '.php');
+
+		$this->template_vars = array_merge($this->template_vars, $local, $channel_local);
+		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
+		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
+		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, 5);
 		$this->markup = $this->populate_markup();
 		return $this->markup;
 	}
 	
-	function get_recent_videos()
+	function format_recent_videos($items, $limit)
 	{
 		// Return an array of recent video objects for formatting.
+		$i = 0;
+		$return = '';
+		foreach ( $items as $key => $value ):
+			$return .= '	<li><a href="' . $value['slug'] . '/">' . $value['title'] . '</a></li>' . "\n";
+		endforeach;
+		return '<ul>' . $return . '</ul>';
 	}
 
-	function get_video()
+	function get_video($items, $slug)
 	{
-		// Return the details of a video object
+		// Given a CSV of video items, return the details of a video object
+		foreach ( $items as $value ):
+			if ( $value['slug'] == trim($slug) ) return $value;
+		endforeach;
+		return false;
 	}
 
 	function return_404()
