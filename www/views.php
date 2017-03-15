@@ -18,7 +18,7 @@ class Request {
 			'SHORTURL' => 'http://nydn.us/WorldWarE',
 			'KEYWORDS' => 'news,video,\'news video\'', 
 			'CANONICAL_URL' => '', 
-			'IMGNAME' => '',
+			'IMAGE_URL' => '',
 			'PATHING' => '', 
 			'ASIDE_H2' => '', 
 			'PLAYER_URL' => '', 
@@ -51,6 +51,7 @@ class Request {
 		$local = array(
 			'PATHING' => '../', 
 			'CANONICAL_URL' => $this->domain . $this->url_base . $channel . '/',
+			'IMAGE_URL' => $this->domain . $this->url_base . 'img/' . $channel . '.jpg',
 			'CONTENT' => file_get_contents('content/channel.html'),
 		);
 		// This include will populate the $channel_local array.

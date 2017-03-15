@@ -12,5 +12,4 @@ $channel_local = array(
 	'SHORTURL' => 'http://nydn.us/WorldWarE',
 	'PLAYER_URL' => '//www.ora.tv/embed/partner/thedailynewsflash/playlist/256/v/1',
 	'KEYWORDS' => '', 
-	'IMGNAME' => '',
 );
