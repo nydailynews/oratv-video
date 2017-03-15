@@ -67,6 +67,9 @@ class Request {
 	{
 		// Return markup of an entire html page.
 		$local = array(
+			'TITLE' => $details['title'], 
+			'DESCRIPTION' => $details['description'], 
+			'CANONICALURL' => 'http://interactive.nydailynews.com/video/' . $channel . '/' . $details['slug'] . '/', 
 			'PATHING' => '../../', 
 			'CONTENT' => file_get_contents('content/detail.html'),
 		);
@@ -75,7 +78,7 @@ class Request {
 		// so we merge that later on too.
 		include('channel/' . $channel . '.php');
 
-		$this->template_vars = array_merge($this->template_vars, $local, $channel_local);
+		$this->template_vars = array_merge($this->template_vars, $channel_local, $local);
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
 		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, 5);
@@ -96,9 +99,9 @@ class Request {
 
 	function get_video($items, $slug)
 	{
-		// Given a CSV of video items, return the details of a video object
+		// Given a CSV of video items, return the details of a video object.
 		foreach ( $items as $value ):
-			if ( $value['slug'] == trim($slug) ) return $value;
+			if ( trim($value['slug']) == trim($slug) ) return $value;
 		endforeach;
 		return false;
 	}

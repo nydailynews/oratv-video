@@ -26,7 +26,8 @@ if ( $slug !== '' ):
 	if ( !in_array($vendor, $approved_vendors) ) $request->return_404();
 	if ( !in_array($channel, $approved_channels) ) $request->return_404();
 	$channel_data = new parseCSV('channel-' . $vendor . '-' . $channel . '.csv');
-	echo $request->return_detail($channel, $channel_data, $slug);
+	$details = $request->get_video($channel_data->data, $slug);
+	echo $request->return_detail($channel, $channel_data, $details);
 elseif ( $channel !== '' ):
 	if ( !in_array($vendor, $approved_vendors) ) $request->return_404();
 	if ( !in_array($channel, $approved_channels) ) $request->return_404();
