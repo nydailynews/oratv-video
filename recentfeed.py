@@ -68,6 +68,8 @@ class RecentFeed:
         return items
 
 def main(args):
+    """ For command-line use.
+        """
     rf = RecentFeed(args)
     if args:
         articles = []
@@ -95,7 +97,12 @@ def main(args):
                     article['datetime'] = '%d0%d%d' % (dt.year, dt.month, dt.day)
                     if dt.day < 10:
                         article['datetime'] = '%d0%d0%d' % (dt.year, dt.month, dt.day)
-                print '%(datetime)s,%(id)s,"%(title)s","%(description)s"' % article
+                article['slug'] = article['title'].lower().replace(' ', '-').replace('--', '-')
+                article['iframe_url'] = article['media_player']['url']
+                article['image_url'] = article['media_thumbnail'][0]['url']
+                article['image_large_url'] = article['media_thumbnail'][1]['url']
+                # date,title,id,slug,player_url,image_url,image_large_url,keywords,description
+                print '%(datetime)s,"%(title)s",%(id)s,%(slug)s,%(iframe_url)s,%(image_url)s,%(image_large_url)s,"%(media_keywords)s","%(description)s"' % article
 
 
 def build_parser():
