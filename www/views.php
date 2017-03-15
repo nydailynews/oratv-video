@@ -24,6 +24,7 @@ class Request {
 			'PLAYER_URL' => '', 
 			'UPLOAD_DATE' => '', 
 			'MORE' => '', 
+			'TWITDESC' => '', 
 			'PLAYER' => file_get_contents('player.html'),
 		);
 		$this->markup = file_get_contents('blank.html');

@@ -278,6 +278,7 @@ article p, #intro_box p, .dek {
 @media only screen and (min-width: 1025px) {
  article aside aside { display: none; }
  .video aside { display: block; }
+ .video h3 { clear: both; }
 }
 @media only screen and (max-width: 1025px) {
  article aside aside { display: block; }
