@@ -81,6 +81,9 @@ def main(args):
             articles.append(rf.recently())
 
 
+        if args.output == 'csv':
+            print 'date,title,id,slug,player_url,image_url,image_large_url,keywords,description'
+
         for i, article in enumerate(articles[0]):
             if args.output == 'html':
                 if type(article['title']) is types.UnicodeType:
