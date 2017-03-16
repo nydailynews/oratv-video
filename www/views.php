@@ -25,6 +25,7 @@ class Request {
 			'UPLOAD_DATE' => '', 
 			'MORE' => '', 
 			'TWITDESC' => '', 
+			'PUBDATE' => '2017-03-16', 
 			'PLAYER' => file_get_contents('player.html'),
 		);
 		$this->markup = file_get_contents('blank.html');
