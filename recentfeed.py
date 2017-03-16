@@ -92,11 +92,11 @@ def main(args):
                     'description': article['description']})
             elif args.output == 'csv':
                 dt = datetime.fromtimestamp(mktime(article.published_parsed))
-                article['datetime'] = '%s%s%s' % (dt.year, dt.month, dt.day)
+                article['datetime'] = '%s-%s-%s' % (dt.year, dt.month, dt.day)
                 if dt.month < 10:
-                    article['datetime'] = '%d0%d%d' % (dt.year, dt.month, dt.day)
+                    article['datetime'] = '%d-0%d-%d' % (dt.year, dt.month, dt.day)
                     if dt.day < 10:
-                        article['datetime'] = '%d0%d0%d' % (dt.year, dt.month, dt.day)
+                        article['datetime'] = '%d-0%d-0%d' % (dt.year, dt.month, dt.day)
                 article['slug'] = article['title'].lower().replace(' ', '-').replace('--', '-')
                 article['iframe_url'] = article['media_player']['url']
                 article['image_url'] = article['media_thumbnail'][0]['url']
