@@ -26,6 +26,7 @@ class Request {
 			'MORE' => '', 
 			'TWITDESC' => '', 
 			'PUBDATE' => '2017-03-16', 
+			'ADTAXONOMY' => 'news_video', 
 			'PLAYER' => file_get_contents('player.html'),
 		);
 		$this->markup = file_get_contents('blank.html');
