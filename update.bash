@@ -9,6 +9,7 @@ ITEMS=`expr ${#CHANNELS[@]} - 1`
 for i in $(seq 0 $ITEMS); do 
     NEW_CSV="www/new-${CHANNELS[$i]}.csv"
     CHANNEL_CSV="www/channel-${CHANNELS[$i]}.csv"
-    python recentfeed.py ${FEEDS[$i]} --output csv --days 2 > $NEW_CSV
+    head -n 1 $CHANNEL_CSV > $NEW_CSV
+    python recentfeed.py ${FEEDS[$i]} --output csv --days 9 >> $NEW_CSV
     python addtocsv.py $NEW_CSV $CHANNEL_CSV
 done

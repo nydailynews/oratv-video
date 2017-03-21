@@ -4,25 +4,68 @@
 import os
 import doctest
 import argparse
-import unicodecsv
+import unicodecsv as csv
 from cStringIO import StringIO
+from sets import Set
 
 def main(args):
     """ For command-line use.
         """
     if args:
-        new = 
-        articles = []
-        for arg in args.fns[0]:
-            if args.verbose:
-                print arg
+        if len(args.fns[0]) > 1:
+            new = csv.DictReader(file(args.fns[0][0], 'rb'), encoding='utf-8')
+            current = csv.DictReader(file(args.fns[0][1], 'rb'), encoding='utf-8')
+
+            # Loop through each item in the new csv.
+            # If the new item isn't in the current, add it.
+            # If the new item is already in the current but has some changes, overwrite the current's item.
+            to_add = []
+            to_update = []
+            ids = []
+            for i, new in enumerate(new):
+                for j, existing in enumerate(current):
+                    if new['id'] == existing['id']:
+                        if new['id'] not in ids:
+                            ids.append(new['id'])
+                            to_update.append(new)
+                    else:
+                        if new['id'] not in ids:
+                            ids.append(new['id'])
+                            to_add.append(new)
+                else:
+                    if new['id'] not in ids:
+                        ids.append(new['id'])
+                        to_add.append(new)
+
+            # Write the current csv
+            # First write all the update & additions, and record the id's.
+            # Then loop through the existing records and if we haven't already written them, write 'em.
+            with open(args.fns[0][1], 'rb') as csvfile:
+                h = csv.reader(csvfile)
+                fieldnames = h.next()
+                del h
+
+            with open(args.fns[0][1], 'wb') as csvfile:
+                writefile = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                writefile.writeheader()
+                ids = []
+                for item in to_add + to_update:
+                    ids.append(item['id'])
+                    writefile.writerow(item)
+
+                for item in current:
+                    if item['id'] not in ids:
+                        print "NEW", item['id']
+                        writefile.writerow(item)
+
+                
 
 
 def build_parser():
     """ We put the argparse in a method so we can test it
         outside of the command-line.
         """
-    parser = argparse.ArgumentParser(usage='$ python addtocsv.py http://domain.com/rss/',
+    parser = argparse.ArgumentParser(usage='$ python addtocsv.py file-new.csv file-existing.csv',
                                      description='''Takes a list of CSVs passed as args.
                                                   Returns the items that are in the first one but not in the subsequent ones.''',
                                      epilog='')
