@@ -23,6 +23,7 @@ $approved_channels = ['mike-rogers-world-war-e'];
 $domain = 'http://interactive.nydailynews.com';
 $url_base = '/video/';
 $request = new Request($domain, $url_base);
+$request->vendor = $vendor;
 
 if ( $slug !== '' ):
 	if ( !in_array($vendor, $approved_vendors) ) $request->return_404();

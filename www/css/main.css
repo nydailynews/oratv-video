@@ -284,3 +284,5 @@ article p, #intro_box p, .dek {
  article aside aside { display: block; }
  .video aside { display: none; }
 }
+
+.sub { font-size: 130%; }

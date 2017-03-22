@@ -13,6 +13,7 @@ class Request {
 		$this->url_base = $url_base;
 		$this->template_vars = array(
 			'TITLE' => '', 
+			'CHANNEL' => '', 
 			'DESCRIPTION' => '', 
 			'LONG_DESC' => '', 
 			'SHORTURL' => 'http://nydn.us/WorldWarE',
@@ -26,6 +27,7 @@ class Request {
 			'MORE' => '', 
 			'TWITDESC' => '', 
 			'PUBDATE' => '2017-03-16', 
+			'DATE_FULL' => '', 
 			'ADTAXONOMY' => 'news_video', 
 			'PLAYER' => file_get_contents('player.html'),
 		);
@@ -53,7 +55,7 @@ class Request {
 		// Return markup of an entire html page.
 		$local = array(
 			'PATHING' => '../', 
-			'CANONICAL_URL' => $this->domain . $this->url_base . $channel . '/',
+			'CANONICAL_URL' => $this->domain . $this->url_base . $this->vendor . '-' . $channel . '/',
 			'IMAGE_URL' => $this->domain . $this->url_base . 'img/' . $channel . '.jpg',
 			'CONTENT' => file_get_contents('content/channel.html'),
 		);
@@ -78,7 +80,7 @@ class Request {
 		$local = array(
 			'TITLE' => $details['title'], 
 			'DESCRIPTION' => $details['description'], 
-			'CANONICAL_URL' => $this->domain . $this->url_base . $channel . '/' . $details['slug'] . '/', 
+			'CANONICAL_URL' => $this->domain . $this->url_base . $this->vendor . '-' . $channel . '/' . $details['slug'] . '/', 
 			'PATHING' => '../../', 
 			'CONTENT' => file_get_contents('content/detail.html'),
 		);
@@ -89,6 +91,9 @@ class Request {
 
 		$this->template_vars = array_merge($this->template_vars, $channel_local, $local);
 		$this->template_vars['ASIDE_H2'] = 'More about ' . $channel_local['TITLE'];
+		$this->template_vars['KEYWORDS'] = $details['keywords'];
+		$this->template_vars['DATE_FULL'] = $this->format_date($details['date']);
+		$this->template_vars['PUBDATE'] = $details['date'];
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
 		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 5);
@@ -96,15 +101,23 @@ class Request {
 		return $this->markup;
 	}
 	
+	function format_date($date, $format='basic')
+	{
+		// Takes a string such as '2016-03-22' and returns a fancier string, March 22, 2016.
+		// We always assume that if the year published is the same as the current year then we don't need to include the year.
+		//Warning: strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /apps/video/views.php on line 108
+		//$d = strtotime($date);
+	}
+
 	function format_recent_videos($items, $channel, $limit)
 	{
 		// Return an array of recent video objects for formatting.
 		$i = 0;
 		$return = '';
 		foreach ( $items as $key => $value ):
-			$return .= '	<li><a href="' . $this->url_base . $channel . '/' . $value['slug'] . '/">' . $value['title'] . '</a></li>' . "\n";
+			$return .= '	<li><a href="' . $this->url_base . $this->vendor . '-' . $channel . '/' . $value['slug'] . '/">' . $value['title'] . '</a></li>' . "\n";
 		endforeach;
-		return '<ul>' . $return . '</ul>';
+		return '<h3>Latest episodes</h3><ul>' . $return . '</ul>';
 	}
 
 	function get_video($items, $slug)

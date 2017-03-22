@@ -1,9 +1,10 @@
 <?php
 $channel_local = array(
-	'TITLE' => 'World War E with Mike Rogers Episode One: Cyber War', 
+	'TITLE' => 'World War E with Mike Rogers, Episode 2: Digital Extortion', 
+	'CHANNEL' => 'World War E with Mike Rogers', 
 	'DESCRIPTION' => 'National Security expert Mike Rogers takes you inside World War E and the borderless battleground where cyber-thieves, terrorists and nations use the internet to wage a war for money, power and information.', 
-	'DESCRIPTION' => 'The United States is in a full-blown cyber war with China, Russia and millions of criminals trying to infiltrate our most sensitive information and critical infrastructure.  National security expert Mike Rogers explains the threat, and how the U.S. is working to protect life as we know it in the ever-changing digital world.', 
-	'TWITDESC' => 'National Security expert Mike Rogers on the dangers of the digital age in episode 1 of our video series World War E.', 
+	'DESCRIPTION' => 'Every day, 4000 different ransomware attacks hit the digital files of hospitals, police departments and even your smartphone. A proliferation of criminal enterprises and even governments lock up critical information and demand payment for the key. National security expert Mike Rogers explains this growing threat and how you can fight back.', 
+	'TWITDESC' => 'National Security expert Mike Rogers on the threat of ransomware attacks in episode 2 of our video series World War E.', 
 	'LONG_DESC' => '<p>In just two decades, the Internet went from novelty to necessity, connecting the world like no other medium.  While it is a powerful tool for information and communication, it also has a dark, shadowy side with the potential to disrupt or destroy.</p>
 <p>National Security expert Mike Rogers explores the dangers of life in the digital age in World War E.</p>
 <p>Rogers draws upon his experience at the highest levels of the intelligence community to explain why cyberspace is the new battlefield between nations, citing specific examples where China and Russia and other countries have cyber-meddled in U.S. Affairs.</p>
@@ -12,6 +13,6 @@ $channel_local = array(
 <p>The electronic world has a profound effect on your personal security and privacy...but you have to know how it works to protect yourself.</p>
 <p>Mike Rogers analyzes the threats and gives the best case, worst case, and most likely scenarios in World War E.</p>', 
 	'SHORTURL' => 'http://nydn.us/WorldWarE',
-	'PLAYER_URL' => 'http://www.ora.tv/embed/0_5ex5si9mt9dd/partner/thedailynewslarge',
+	'PLAYER_URL' => 'http://www.ora.tv/embed/0_5n3uqfc7dynw/partner/thedailynewslarge',
 	'KEYWORDS' => '', 
 );
