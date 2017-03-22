@@ -6,7 +6,6 @@ import doctest
 import argparse
 import unicodecsv as csv
 from cStringIO import StringIO
-from sets import Set
 
 def main(args):
     """ For command-line use.
