@@ -94,6 +94,7 @@ class Request {
 		$this->template_vars['KEYWORDS'] = $details['keywords'];
 		$this->template_vars['DATE_FULL'] = $this->format_date($details['date']);
 		$this->template_vars['PUBDATE'] = $details['date'];
+		$this->template_vars['SHORTURL'] = $local['CANONICAL_URL'];
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
 		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 5);
