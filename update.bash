@@ -1,6 +1,7 @@
 #!/bin/bash
 # Pull in any new feed items for the video channels we're publishing.
 
+source .source.bash
 declare -a FEEDS=('http://feeds.ora.tv/partner/thedailynewslarge/worldware-episodes.mrss')
 declare -a CHANNELS=('ora-mike-rogers-world-war-e')
 # Arrays are 0-indexed, but the length of arrays lives in a 1-indexed world.
@@ -15,3 +16,8 @@ for i in $(seq 0 $ITEMS); do
     python recentfeed.py ${FEEDS[$i]} --output csv --days 9 >> $NEW_CSV
     python addtocsv.py $NEW_CSV $CHANNEL_CSV
 done
+
+# Move the CSV to prod, if necessary
+if [ -z $PROD ]; then
+    scp $CHANNEL_CSV $PROD:$PROD_PATH/
+fi
