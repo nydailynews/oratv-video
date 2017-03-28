@@ -25,7 +25,7 @@ class Request {
 			'PLAYER_URL' => '', 
 			'UPLOAD_DATE' => '', 
 			'MORE' => '', 
-			'TWITDESC' => '', 
+			'TWIT_DESC' => '', 
 			'PUBDATE' => '2017-03-16', 
 			'DATE_FULL' => '', 
 			'ADTAXONOMY' => 'news_video', 
@@ -69,6 +69,8 @@ class Request {
 		$channel_count = count($items->data);
 		$this->template_vars['TITLE'] = str_replace('EPISODE_NAME', $items->data[0]['title'], $channel_local['TITLE']);
 		$this->template_vars['TITLE'] = str_replace('EPISODE_NUMBER', $channel_count, $this->template_vars['TITLE']);
+		$this->template_vars['DESCRIPTION'] = $items->data[0]['description'];
+		$this->template_vars['TWIT_DESC'] = str_replace('EPISODE_NUMBER', $channel_count, $this->template_vars['TWIT_DESC']);
 		$this->template_vars['ASIDE_H2'] = 'More about ' . $channel_local['TITLE'];
 		$this->template_vars['ASIDE_H2'] = 'More about “World War E” with Mike Rogers';
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
@@ -94,7 +96,7 @@ class Request {
 		include('channel/' . $channel . '.php');
 
 		$this->template_vars = array_merge($this->template_vars, $channel_local, $local);
-		$this->template_vars['ASIDE_H2'] = 'More about ' . $channel_local['TITLE'];
+		$this->template_vars['ASIDE_H2'] = 'More about ' . $channel_local['CHANNEL'];
 		$this->template_vars['KEYWORDS'] = $details['keywords'];
 		$this->template_vars['DATE_FULL'] = $this->format_date($details['date']);
 		$this->template_vars['PUBDATE'] = $details['date'];
