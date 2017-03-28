@@ -29,6 +29,7 @@ class Request {
 			'PUBDATE' => '2017-03-16', 
 			'DATE_FULL' => '', 
 			'ADTAXONOMY' => 'news_video', 
+			'EPISODE_NUMBER' => '', 
 			'PLAYER' => file_get_contents('player.html'),
 		);
 		$this->markup = file_get_contents('blank.html');
@@ -65,6 +66,9 @@ class Request {
 		include('channel/' . $channel . '.php');
 
 		$this->template_vars = array_merge($this->template_vars, $local, $channel_local);
+		$channel_count = count($items->data);
+		$this->template_vars['TITLE'] = str_replace('EPISODE_NAME', $items->data[0]['title'], $channel_local['TITLE']);
+		$this->template_vars['TITLE'] = str_replace('EPISODE_NUMBER', $channel_count, $this->template_vars['TITLE']);
 		$this->template_vars['ASIDE_H2'] = 'More about ' . $channel_local['TITLE'];
 		$this->template_vars['ASIDE_H2'] = 'More about “World War E” with Mike Rogers';
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
@@ -118,7 +122,7 @@ class Request {
 		foreach ( $items as $key => $value ):
 			$return .= '	<li><a href="' . $this->url_base . $this->vendor . '-' . $channel . '/' . $value['slug'] . '/">' . $value['title'] . '</a></li>' . "\n";
 		endforeach;
-		return '<h3>Latest episodes</h3><ul>' . $return . '</ul>';
+		return '<h3>Episodes</h3><ul>' . $return . '</ul>';
 	}
 
 	function get_video($items, $slug)

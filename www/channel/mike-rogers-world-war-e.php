@@ -1,10 +1,10 @@
 <?php
 $channel_local = array(
-	'TITLE' => 'World War E with Mike Rogers, Episode 2: Digital Extortion', 
+	'TITLE' => 'World War E with Mike Rogers, Episode EPISODE_NUMBER: EPISODE_NAME', 
 	'CHANNEL' => 'World War E with Mike Rogers', 
 	'DESCRIPTION' => 'National Security expert Mike Rogers takes you inside World War E and the borderless battleground where cyber-thieves, terrorists and nations use the internet to wage a war for money, power and information.', 
 	'DESCRIPTION' => 'Every day, 4000 different ransomware attacks hit the digital files of hospitals, police departments and even your smartphone. A proliferation of criminal enterprises and even governments lock up critical information and demand payment for the key. National security expert Mike Rogers explains this growing threat and how you can fight back.', 
-	'TWITDESC' => 'National Security expert Mike Rogers on the threat of ransomware attacks in episode 2 of our video series World War E.', 
+	'TWITDESC' => 'National Security expert Mike Rogers on the threat of ransomware in episode 2 of our video series World War E', 
 	'LONG_DESC' => '<p>In just two decades, the Internet went from novelty to necessity, connecting the world like no other medium.  While it is a powerful tool for information and communication, it also has a dark, shadowy side with the potential to disrupt or destroy.</p>
 <p>National Security expert Mike Rogers explores the dangers of life in the digital age in World War E.</p>
 <p>Rogers draws upon his experience at the highest levels of the intelligence community to explain why cyberspace is the new battlefield between nations, citing specific examples where China and Russia and other countries have cyber-meddled in U.S. Affairs.</p>
@@ -14,5 +14,6 @@ $channel_local = array(
 <p>Mike Rogers analyzes the threats and gives the best case, worst case, and most likely scenarios in World War E.</p>', 
 	'SHORTURL' => 'http://nydn.us/WorldWarE',
 	'PLAYER_URL' => 'http://www.ora.tv/embed/0_5n3uqfc7dynw/partner/thedailynewslarge',
+	'PLAYER_URL' => 'http://www.ora.tv/embed/partner/thedailynewslarge/playlist/275/v/1',
 	'KEYWORDS' => '', 
 );
