@@ -13,11 +13,9 @@ for i in $(seq 0 $ITEMS); do
     head -n 1 $CHANNEL_CSV > $NEW_CSV
     python recentfeed.py ${FEEDS[$i]} --output csv --days 9 >> $NEW_CSV
     python addtocsv.py $NEW_CSV $CHANNEL_CSV
-    python recentfeed.py ${FEEDS[$i]} --output csv --days 9 >> $NEW_CSV
-    python addtocsv.py $NEW_CSV $CHANNEL_CSV
 done
 
 # Move the CSV to prod, if necessary
-if [ -z $PROD ]; then
-    scp $CHANNEL_CSV $PROD:$PROD_PATH/
-fi
+#if [ -z $PROD ]; then
+    #scp $CHANNEL_CSV $PROD:$PROD_PATH/
+#fi

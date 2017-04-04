@@ -21,8 +21,10 @@ def main(args):
             to_add = []
             to_update = []
             ids = []
+            current_items = []
             for i, new in enumerate(new):
                 for j, existing in enumerate(current):
+                    current_items.append(existing)
                     if new['id'] == existing['id']:
                         if new['id'] not in ids:
                             ids.append(new['id'])
@@ -45,16 +47,18 @@ def main(args):
                 del h
 
             with open(args.fns[0][1], 'wb') as csvfile:
+                current = csv.DictReader(file(args.fns[0][1], 'rb'), encoding='utf-8')
                 writefile = csv.DictWriter(csvfile, fieldnames=fieldnames)
                 writefile.writeheader()
                 ids = []
                 for item in to_add + to_update:
                     ids.append(item['id'])
+                    #print "NEWISH", item['id']
                     writefile.writerow(item)
 
-                for item in current:
+                for item in current_items:
                     if item['id'] not in ids:
-                        print "NEW", item['id']
+                        #print "NEW", item['id']
                         writefile.writerow(item)
 
                 
