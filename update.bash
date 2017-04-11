@@ -1,5 +1,16 @@
 #!/bin/bash
 # Pull in any new feed items for the video channels we're publishing.
+# Pass in arguments if you want to scp the channel CSV to prod, like so:
+# ./update.bash --prod server.name /path/to/app/dir
+while [ "$1" != "" ]; do
+    case $1 in
+        -p | --prod ) shift
+            PROD=$1
+            PROD_PATH=$2
+            ;;
+    esac
+    shift
+done
 
 source .source.bash
 declare -a FEEDS=('http://feeds.ora.tv/partner/thedailynewslarge/worldware-episodes.mrss')
@@ -11,11 +22,11 @@ for i in $(seq 0 $ITEMS); do
     NEW_CSV="www/new-${CHANNELS[$i]}.csv"
     CHANNEL_CSV="www/channel-${CHANNELS[$i]}.csv"
     head -n 1 $CHANNEL_CSV > $NEW_CSV
-    python recentfeed.py ${FEEDS[$i]} --output csv --days 9 >> $NEW_CSV
+    python recentfeed.py ${FEEDS[$i]} --output csv --days 3 >> $NEW_CSV
     python addtocsv.py $NEW_CSV $CHANNEL_CSV
 done
 
 # Move the CSV to prod, if necessary
-#if [ -z $PROD ]; then
-    #scp $CHANNEL_CSV $PROD:$PROD_PATH/
-#fi
+if [ -z $PROD ]; then
+    scp $CHANNEL_CSV $PROD:$PROD_PATH/
+fi
