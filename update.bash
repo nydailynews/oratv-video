@@ -12,7 +12,10 @@ while [ "$1" != "" ]; do
     shift
 done
 
-source .source.bash
+if [ -e .source.bash ]; then
+    source .source.bash
+fi
+
 declare -a FEEDS=('http://feeds.ora.tv/partner/thedailynewslarge/worldware-episodes.mrss')
 declare -a CHANNELS=('ora-mike-rogers-world-war-e')
 # Arrays are 0-indexed, but the length of arrays lives in a 1-indexed world.
@@ -23,10 +26,14 @@ for i in $(seq 0 $ITEMS); do
     CHANNEL_CSV="www/channel-${CHANNELS[$i]}.csv"
     head -n 1 $CHANNEL_CSV > $NEW_CSV
     python recentfeed.py ${FEEDS[$i]} --output csv --days 3 >> $NEW_CSV
-    python addtocsv.py $NEW_CSV $CHANNEL_CSV
+    COUNT=`cat $NEW_CSV | wc -l`
+    if [ $COUNT -gt 1 ]; then
+        echo $COUNT
+        python addtocsv.py $NEW_CSV $CHANNEL_CSV
+    fi
 done
 
 # Move the CSV to prod, if necessary
-if [ -z $PROD ]; then
+if [ ! -z $PROD ]; then
     scp $CHANNEL_CSV $PROD:$PROD_PATH/
 fi
