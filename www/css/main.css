@@ -146,11 +146,14 @@ article p, #intro_box p, .dek {
   float: left !important;
 }
 
-.rel_content2 img{
+/*.rel_content2 img{
   width: 95%;
+  height: auto !important;
   padding-bottom: 18px;
+  padding-right: 15px;
   object-fit: cover;
-} 
+
+} */
 
 .rel_content2 p {
   font-size: 16px;
@@ -174,6 +177,25 @@ article p, #intro_box p, .dek {
   font-family: Open Sans Condensed;
 }
 
+aside#below .rel_content2 p{
+  font-family: Open Sans Condensed !important;
+  padding: 0 15px 18px 0 !important;
+}
+
+aside#below .rel_content2 img{
+  width: 95%;
+  height: auto !important;
+  padding: 0 15px 18px 0 !important;
+  object-fit: cover;
+}
+
+.more_WWE {
+  font-size: 17px;
+  padding-bottom: 11px;
+  color: #bcbcbc;
+  font-weight: bold;
+  text-transform: uppercase;
+}
 
 
 #byline {
