@@ -139,7 +139,7 @@ class Request {
 		foreach ( $items as $key => $value ):
 			$return .= '
             <div class="rel_content2 large-3 medium-3 columns">
-                <a href="' . $this->url_base . $this->vendor . '-' . $channel . '/' . $value['slug'] . '/"><img class="img rel_content2 large-3 medium-3 columns" alt="' . $value['title'] . '" src="' . $value['image_url'] . '"></a>
+                <a href="' . $this->url_base . $this->vendor . '-' . $channel . '/' . $value['slug'] . '/"><img class="img rel_content2 large-3 medium-3 columns" alt="Mike Rogers’ ' . $value['title'] . '" src="' . $value['image_url'] . '"></a>
                 <p class="rel_content2"><a href="' . $this->url_base . $this->vendor . '-' . $channel . '/' . $value['slug'] . '/">' . $value['title'] . '</a></p>
 			</div>';
 			$i += 1;

@@ -1,7 +1,7 @@
 <?php
 $channel_local = array(
-	'TITLE' => 'World War E with Mike Rogers, Episode EPISODE_NUMBER: EPISODE_NAME', 
-	'CHANNEL' => 'World War E with Mike Rogers', 
+	'TITLE' => 'Mike Rogers’ World War E, Episode EPISODE_NUMBER: EPISODE_NAME', 
+	'CHANNEL' => 'Mike Rogers’ World War E', 
 	'DESCRIPTION' => 'National Security expert Mike Rogers takes you inside World War E and the borderless battleground where cyber-thieves, terrorists and nations use the internet to wage a war for money, power and information.', 
 	'TWIT_DESC' => 'National Security expert Mike Rogers in episode EPISODE_NUMBER of our video series World War E', 
 	'LONG_DESC' => '<p>In just two decades, the Internet went from novelty to necessity, connecting the world like no other medium.  While it is a powerful tool for information and communication, it also has a dark, shadowy side with the potential to disrupt or destroy.</p>
@@ -14,5 +14,5 @@ $channel_local = array(
 	'SHORTURL' => 'http://nydn.us/WorldWarE',
 	'PLAYER_URL' => 'http://www.ora.tv/embed/0_5n3uqfc7dynw/partner/thedailynewslarge',
 	'PLAYER_URL' => 'http://www.ora.tv/embed/partner/thedailynewslarge/playlist/275/v/1',
-	'KEYWORDS' => '', 
+	'KEYWORDS' => 'Mike Rogers,Cyber,Security', 
 );
