@@ -69,6 +69,9 @@ class Request {
 		$channel_count = count($items->data);
 		$this->template_vars['TITLE'] = str_replace('EPISODE_NAME', $items->data[0]['title'], $channel_local['TITLE']);
 		$this->template_vars['TITLE'] = str_replace('EPISODE_NUMBER', $channel_count, $this->template_vars['TITLE']);
+		$this->template_vars['TITLE'] = str_replace('EPISODE_NAME', '', $channel_local['TITLE']);
+		$this->template_vars['TITLE'] = str_replace('EPISODE_NUMBER', '', $this->template_vars['TITLE']);
+		$this->template_vars['TITLE'] = str_replace(', Episode : ', '', $this->template_vars['TITLE']);
 		$this->template_vars['DESCRIPTION'] = $items->data[0]['description'];
 		$this->template_vars['TWIT_DESC'] = str_replace('EPISODE_NUMBER', $channel_count, $this->template_vars['TWIT_DESC']);
 		$this->template_vars['ASIDE_H2'] = 'More about ' . $channel_local['TITLE'];

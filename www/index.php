@@ -26,17 +26,20 @@ $request = new Request($domain, $url_base);
 $request->vendor = $vendor;
 
 if ( $slug !== '' ):
+	// VIDEO DETAIL
 	if ( !in_array($vendor, $approved_vendors) ) $request->return_404();
 	if ( !in_array($channel, $approved_channels) ) $request->return_404();
 	$channel_data = new parseCSV('channel-' . $vendor . '-' . $channel . '.csv');
 	$details = $request->get_video($channel_data->data, $slug);
 	echo $request->return_detail($channel, $channel_data, $details);
 elseif ( $channel !== '' ):
+	// CHANNEL INDEX
 	if ( !in_array($vendor, $approved_vendors) ) $request->return_404();
 	if ( !in_array($channel, $approved_channels) ) $request->return_404();
 	$channel_data = new parseCSV('channel-' . $vendor . '-' . $channel . '.csv');
 	echo $request->return_channel($channel, $channel_data);
 else:
+	// VIDEO SECTION FRONT
 	echo $request->return_index();
 endif;
 ?>
