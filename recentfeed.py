@@ -101,6 +101,7 @@ def main(args):
                 article['iframe_url'] = article['media_player']['url']
                 article['image_url'] = article['media_thumbnail'][0]['url']
                 article['image_large_url'] = article['media_thumbnail'][1]['url']
+                article['description'] = article['description'].replace('"', "'")
                 # date,title,id,slug,player_url,image_url,image_large_url,keywords,description
                 print '%(datetime)s,"%(title)s",%(id)s,%(slug)s,%(iframe_url)s,%(image_url)s,%(image_large_url)s,"%(media_keywords)s","%(description)s"' % article
 

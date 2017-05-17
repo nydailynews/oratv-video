@@ -53,7 +53,7 @@ def main(args):
                 ids = []
                 for item in to_add + to_update:
                     ids.append(item['id'])
-                    #print "NEWISH", item['id']
+                    #print item
                     writefile.writerow(item)
 
                 for item in current_items:
