@@ -1,7 +1,6 @@
 <?php
 require('env.php');
 require(CLASS_PATH . 'class.csv.php');
-//include('../class.csv.php');
 include('views.php');
 
 // Take any GET parameters and turn that into content we can relay back to the template.
