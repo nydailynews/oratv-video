@@ -17,8 +17,8 @@ $vendor = htmlspecialchars($_GET['vendor']);
 $channel = htmlspecialchars($_GET['channel']);
 $slug = htmlspecialchars($_GET['slug']);
 
-$approved_vendors = ['ora'];
-$approved_channels = ['mike-rogers-world-war-e'];
+$approved_vendors = ['ora', 'nydn'];
+$approved_channels = ['mike-rogers-world-war-e', 'daily-news-video'];
 
 $domain = 'http://interactive.nydailynews.com';
 $url_base = '/video/';
