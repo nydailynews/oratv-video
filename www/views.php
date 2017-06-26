@@ -83,6 +83,7 @@ class Request {
 		//$this->template_vars['ASIDE_H2'] = 'More about “World War E” with Mike Rogers';
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
+		//$this->template_vars['VIDEO_ID'] = $details['id'];
 		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 5, $this->template_vars['MORE_LABEL_TEXT']);
 		$this->template_vars['THUMBNAILS'] = $this->format_video_thumbnails($items->data, $channel, 4);
 		$this->markup = $this->populate_markup();
@@ -118,6 +119,7 @@ class Request {
 		$this->template_vars['SHORTURL'] = $local['CANONICAL_URL'];
 		$this->template_vars['IMAGE_URL'] = $details['image_large_url'];
 		$this->template_vars['PLAYER_URL'] = $details['player_url'];
+		$this->template_vars['VIDEO_ID'] = $details['id'];
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
 		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 5, $this->template_vars['MORE_LABEL_TEXT']);
