@@ -15,4 +15,5 @@ $channel_local = array(
 	'PLAYER_URL' => 'http://www.ora.tv/embed/0_5n3uqfc7dynw/partner/thedailynewslarge',
 	'PLAYER_URL' => 'http://www.ora.tv/embed/partner/thedailynewslarge/playlist/275/v/1',
 	'KEYWORDS' => 'Mike Rogers,Cyber,Security', 
+	'MORE_LABEL_TEXT' => 'Episodes', 
 );

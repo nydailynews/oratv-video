@@ -83,7 +83,7 @@ class Request {
 		//$this->template_vars['ASIDE_H2'] = 'More about “World War E” with Mike Rogers';
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
-		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 5);
+		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 5, $this->template_vars['MORE_LABEL_TEXT']);
 		$this->template_vars['THUMBNAILS'] = $this->format_video_thumbnails($items->data, $channel, 4);
 		$this->markup = $this->populate_markup();
 		return $this->markup;
@@ -120,7 +120,7 @@ class Request {
 		$this->template_vars['PLAYER_URL'] = $details['player_url'];
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
-		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 5);
+		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 5, $this->template_vars['MORE_LABEL_TEXT']);
 		$this->template_vars['THUMBNAILS'] = $this->format_video_thumbnails($items->data, $channel, 4);
 		$this->markup = $this->populate_markup();
 		return $this->markup;
@@ -134,7 +134,7 @@ class Request {
 		//$d = strtotime($date);
 	}
 
-	function format_recent_videos($items, $channel, $limit)
+	function format_recent_videos($items, $channel, $limit, $label_text='Episodes')
 	{
 		// Return an array of recent video objects for formatting.
 		$i = 0;
@@ -142,7 +142,7 @@ class Request {
 		foreach ( $items as $key => $value ):
 			$return .= '	<li><a href="' . $this->url_base . $this->vendor . '-' . $channel . '/' . $value['slug'] . '/">' . $value['title'] . '</a></li>' . "\n";
 		endforeach;
-		return '<h3>Episodes</h3><ul>' . $return . '</ul>';
+		return '<h3>' . $label_text . '</h3><ul>' . $return . '</ul>';
 	}
 
 	function format_video_thumbnails($items, $channel, $limit)

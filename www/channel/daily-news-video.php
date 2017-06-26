@@ -9,4 +9,5 @@ $channel_local = array(
 	'PLAYER_TYPE' => 'VIDIBLE',
 	'PLAYER_URL' => '',
 	'KEYWORDS' => '', 
+	'MORE_LABEL_TEXT' => '', 
 );
