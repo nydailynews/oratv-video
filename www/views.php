@@ -84,7 +84,7 @@ class Request {
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
 		//$this->template_vars['VIDEO_ID'] = $details['id'];
-		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 15, $this->template_vars['MORE_LABEL_TEXT']);
+		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 20, $this->template_vars['MORE_LABEL_TEXT']);
 		$this->template_vars['THUMBNAILS'] = $this->format_video_thumbnails($items->data, $channel, 4);
 		$this->markup = $this->populate_markup();
 		return $this->markup;
@@ -136,7 +136,7 @@ class Request {
 		//$d = strtotime($date);
 	}
 
-	function format_recent_videos($items, $channel, $limit, $label_text='Episodes')
+	function format_recent_videos($items, $channel, $limit, $label_text='Recent Episodes')
 	{
 		// Return an array of recent video objects for formatting.
 		$i = 0;
