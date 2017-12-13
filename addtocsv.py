@@ -29,6 +29,7 @@ def main(args):
                         if new['id'] not in ids:
                             ids.append(new['id'])
                             to_update.append(new)
+                            # *** TODO: See if there are differences in the record and only if there are make a change
                     else:
                         if new['id'] not in ids:
                             ids.append(new['id'])

@@ -309,3 +309,7 @@ aside#below .rel_content2 img{
 }
 
 .sub { font-size: 130%; }
+li {
+    line-height: 16px;
+    margin-bottom: 10px;
+}

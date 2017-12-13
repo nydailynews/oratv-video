@@ -67,6 +67,9 @@ class Request {
 
 		$this->template_vars = array_merge($this->template_vars, $local, $channel_local);
 		$channel_count = count($items->data);
+		if ( array_key_exists('PLAYER_TYPE', $this->template_vars) ):
+			$this->template_vars['PLAYER'] = file_get_contents('player-' . strtolower($this->template_vars['PLAYER_TYPE']) . '.html');
+		endif;
 		$this->template_vars['TITLE'] = str_replace('EPISODE_NAME', $items->data[0]['title'], $channel_local['TITLE']);
 		$this->template_vars['TITLE'] = str_replace('EPISODE_NUMBER', $channel_count, $this->template_vars['TITLE']);
 		$this->template_vars['TITLE'] = str_replace('EPISODE_NAME', '', $channel_local['TITLE']);
@@ -74,11 +77,14 @@ class Request {
 		$this->template_vars['TITLE'] = str_replace(', Episode : ', '', $this->template_vars['TITLE']);
 		$this->template_vars['DESCRIPTION'] = $items->data[0]['description'];
 		$this->template_vars['TWIT_DESC'] = str_replace('EPISODE_NUMBER', $channel_count, $this->template_vars['TWIT_DESC']);
-		$this->template_vars['ASIDE_H2'] = 'More about ' . $channel_local['TITLE'];
-		$this->template_vars['ASIDE_H2'] = 'More about “World War E” with Mike Rogers';
+		if ( $this->template_vars['LONG_DESC'] != '' ):
+			$this->template_vars['ASIDE_H2'] = 'More about ' . $channel_local['CHANNEL'];
+		endif;
+		//$this->template_vars['ASIDE_H2'] = 'More about “World War E” with Mike Rogers';
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
-		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 5);
+		//$this->template_vars['VIDEO_ID'] = $details['id'];
+		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 20, $this->template_vars['MORE_LABEL_TEXT']);
 		$this->template_vars['THUMBNAILS'] = $this->format_video_thumbnails($items->data, $channel, 4);
 		$this->markup = $this->populate_markup();
 		return $this->markup;
@@ -99,17 +105,24 @@ class Request {
 		// so we merge that later on too.
 		include('channel/' . $channel . '.php');
 
+
 		$this->template_vars = array_merge($this->template_vars, $channel_local, $local);
-		$this->template_vars['ASIDE_H2'] = 'More about ' . $channel_local['CHANNEL'];
+		if ( array_key_exists('PLAYER_TYPE', $this->template_vars) ):
+			$this->template_vars['PLAYER'] = file_get_contents('player-' . strtolower($this->template_vars['PLAYER_TYPE']) . '.html');
+		endif;
+		if ( $this->template_vars['LONG_DESC'] != '' ):
+			$this->template_vars['ASIDE_H2'] = 'More about ' . $channel_local['CHANNEL'];
+		endif;
 		$this->template_vars['KEYWORDS'] = $details['keywords'];
 		$this->template_vars['DATE_FULL'] = $this->format_date($details['date']);
 		$this->template_vars['PUBDATE'] = $details['date'];
 		$this->template_vars['SHORTURL'] = $local['CANONICAL_URL'];
 		$this->template_vars['IMAGE_URL'] = $details['image_large_url'];
 		$this->template_vars['PLAYER_URL'] = $details['player_url'];
+		$this->template_vars['VIDEO_ID'] = $details['id'];
 		$this->template_vars['CONTENT'] = $this->populate_markup($local['CONTENT']);
 		$this->template_vars['PLAYER'] = $this->populate_markup($this->template_vars['PLAYER']);
-		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 5);
+		$this->template_vars['MORE'] = $this->format_recent_videos($items->data, $channel, 5, $this->template_vars['MORE_LABEL_TEXT']);
 		$this->template_vars['THUMBNAILS'] = $this->format_video_thumbnails($items->data, $channel, 4);
 		$this->markup = $this->populate_markup();
 		return $this->markup;
@@ -123,15 +136,17 @@ class Request {
 		//$d = strtotime($date);
 	}
 
-	function format_recent_videos($items, $channel, $limit)
+	function format_recent_videos($items, $channel, $limit, $label_text='Recent Episodes')
 	{
 		// Return an array of recent video objects for formatting.
 		$i = 0;
 		$return = '';
 		foreach ( $items as $key => $value ):
+			$i ++;
+			if ( $i > $limit ) break;
 			$return .= '	<li><a href="' . $this->url_base . $this->vendor . '-' . $channel . '/' . $value['slug'] . '/">' . $value['title'] . '</a></li>' . "\n";
 		endforeach;
-		return '<h3>Episodes</h3><ul>' . $return . '</ul>';
+		return '<h3>' . $label_text . '</h3><ul>' . $return . '</ul>';
 	}
 
 	function format_video_thumbnails($items, $channel, $limit)
