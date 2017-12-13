@@ -25,7 +25,7 @@ for i in $(seq 0 $ITEMS); do
     NEW_CSV="www/new-${CHANNELS[$i]}.csv"
     CHANNEL_CSV="www/channel-${CHANNELS[$i]}.csv"
     head -n 1 $CHANNEL_CSV > $NEW_CSV
-    python recentfeed.py ${FEEDS[$i]} --output csv --days 3 >> $NEW_CSV
+    python recentfeed.py ${FEEDS[$i]} --output csv --days 9 >> $NEW_CSV
     COUNT=`cat $NEW_CSV | wc -l`
     if [ $COUNT -gt 1 ]; then
         echo $COUNT
